@@ -1,3 +1,6 @@
 [submodule "SoarOS"]
 	path = SoarOS
 	url = https://github.com/UCSOAR/SoarOperatingSystem.git
+[submodule "SoarFS"]
+	path = SoarFS
+	url = https://github.com/UCSOAR/SoarFileSystem.git
