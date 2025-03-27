@@ -18,4 +18,9 @@ extern "C" {
     {
         Driver::uart4.HandleIRQ_UART();
     }
+
+    void cpp_USART2_IRQHandler()
+		{
+				Driver::usart2.HandleIRQ_UART();
+		}
 }

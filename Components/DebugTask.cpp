@@ -32,7 +32,7 @@ extern I2C_HandleTypeDef hi2c2;
  * @brief Constructor, sets all member variables
  */
 DebugTask::DebugTask()
-    : Task(TASK_DEBUG_QUEUE_DEPTH_OBJS), kUart_(UART::Debug) {
+    : Task(TASK_DEBUG_QUEUE_DEPTH_OBJS), kUart_(UART::Debug2) {
   memset(debugBuffer, 0, sizeof(debugBuffer));
   debugMsgIdx = 0;
   isDebugMsgReady = false;

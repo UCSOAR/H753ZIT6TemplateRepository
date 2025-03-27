@@ -24,7 +24,7 @@
 
 /* Cube++ Required Configuration ------------------------------------------------------------------*/
 #include "CubeDefines.hpp"
-constexpr UARTDriver* const DEFAULT_DEBUG_UART_DRIVER = UART::Debug;
+constexpr UARTDriver* const DEFAULT_DEBUG_UART_DRIVER = UART::Debug2;
 
 #define SOAR_ASSERT(expr, ...) ((expr) ? (void)0U : cube_assert_debug(false, (const char *)__FILE__, __LINE__, ##__VA_ARGS__))
 
