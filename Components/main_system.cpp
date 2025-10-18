@@ -12,12 +12,13 @@
 // Tasks
 #include "CubeTask.hpp"
 #include "DebugTask.hpp"
+#include "UARTTask.hpp"
+#include "FileSystemTask.hpp"
+
+
 
 /* Drivers ------------------------------------------------------------------*/
-namespace Driver {
-    UARTDriver uart4(UART4);
-    UARTDriver usart2(USART2);
-}
+
 
 /* Interface Functions ------------------------------------------------------------*/
 /**
@@ -27,12 +28,15 @@ void run_main() {
     // Init Tasks
     CubeTask::Inst().InitTask();
     DebugTask::Inst().InitTask();
+    FileSystemTask::Inst().InitTask();
+    UARTTask::Inst().InitTask();
+
 
     // Print System Boot Info : Warning, don't queue more than 10 prints before scheduler starts
-    CUBE_PRINT("\n-- CUBE SYSTEM --\n");
-    CUBE_PRINT("System Reset Reason: [TODO]\n"); //TODO: System reset reason can be implemented via. Flash storage
-    CUBE_PRINT("Current System Free Heap: %d Bytes\n", xPortGetFreeHeapSize());
-    CUBE_PRINT("Lowest Ever Free Heap: %d Bytes\n\n", xPortGetMinimumEverFreeHeapSize());
+    SOAR_PRINT("\n-- SOAR SYSTEM --\n");
+    SOAR_PRINT("System Reset Reason: [TODO]\n"); //TODO: System reset reason can be implemented via. Flash storage
+    SOAR_PRINT("Current System Free Heap: %d Bytes\n", xPortGetFreeHeapSize());
+    SOAR_PRINT("Lowest Ever Free Heap: %d Bytes\n\n", xPortGetMinimumEverFreeHeapSize());
 
     // Start the Scheduler
     // Guidelines:
@@ -41,7 +45,7 @@ void run_main() {
     osKernelStart();
 
     // Should never reach here
-    CUBE_ASSERT(false, "osKernelStart() failed");
+    SOAR_ASSERT(false, "osKernelStart() failed");
 
     while (1)
     {
