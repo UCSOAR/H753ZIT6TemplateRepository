@@ -52,6 +52,9 @@ FIL USERFile;       /* File  object for USER */
 char USERPath[4];   /* USER logical drive path */
 /* USER CODE BEGIN PV */
 FS_FileOperationsTypeDef Appli_state = APPLICATION_IDLE;
+
+extern Disk_drvTypeDef disk;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -67,6 +70,19 @@ FS_FileOperationsTypeDef Appli_state = APPLICATION_IDLE;
 int32_t MX_FATFS_Init(void)
 {
   /*## FatFS: Link the disk I/O driver(s)  ###########################*/
+if(disk.nbr > 0) {
+	FATFS_UnLinkDriver(USERPath);
+}
+
+/* Force clear the disk structure */
+disk.nbr = 0;
+
+for(int i = 0; i < _VOLUMES; i++) {
+	disk.is_initialized[i] = 0;
+	disk.drv[i] = 0;
+	disk.lun[i] = 0;
+}
+
 
 if (FATFS_LinkDriver(&USER_Driver, USERPath) != 0)
   /* USER CODE BEGIN FATFS_Init */
