@@ -129,8 +129,23 @@ void FileSystemTask::InitializeFileSystem()
         fileSystemInitialized = true;
         SOAR_PRINT("FileSystemTask::InitializeFileSystem() - File system initialized successfully\n");
 
-        // Wait for USB to mount
-        WaitForUSBMount();
+        // Check if file system is mounted (should happen automatically with USB Device MSC)
+        if (SoarFS_IsMounted())
+        {
+            usbMounted = true;
+            SOAR_PRINT("FileSystemTask::InitializeFileSystem() - File system mounted\n");
+
+            // Get and display free space
+            uint32_t freeBytes;
+            if (SoarFS_GetFreeSpace(&freeBytes) == SOAR_FS_OK)
+            {
+                SOAR_PRINT("FileSystemTask::InitializeFileSystem() - Available space: %lu bytes\n", freeBytes);
+            }
+        }
+        else
+        {
+            SOAR_PRINT("FileSystemTask::InitializeFileSystem() - WARNING: File system not mounted yet\n");
+        }
     }
     else
     {
