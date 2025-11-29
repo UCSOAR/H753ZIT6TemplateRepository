@@ -14,27 +14,26 @@
 #include "DebugTask.hpp"
 #include "UARTTask.hpp"
 #include "FileSystemTask.hpp"
-
-
+#include "USBTask.hpp"
 
 /* Drivers ------------------------------------------------------------------*/
-
 
 /* Interface Functions ------------------------------------------------------------*/
 /**
  * @brief Main function interface, called inside main.cpp before os initialization takes place.
-*/
-void run_main() {
+ */
+void run_main()
+{
     // Init Tasks
     CubeTask::Inst().InitTask();
     DebugTask::Inst().InitTask();
-    FileSystemTask::Inst().InitTask();
+    // FileSystemTask::Inst().InitTask();
     UARTTask::Inst().InitTask();
-
+    USBTask::Inst().InitTask();
 
     // Print System Boot Info : Warning, don't queue more than 10 prints before scheduler starts
     SOAR_PRINT("\n-- SOAR SYSTEM --\n");
-    SOAR_PRINT("System Reset Reason: [TODO]\n"); //TODO: System reset reason can be implemented via. Flash storage
+    SOAR_PRINT("System Reset Reason: [TODO]\n"); // TODO: System reset reason can be implemented via. Flash storage
     SOAR_PRINT("Current System Free Heap: %d Bytes\n", xPortGetFreeHeapSize());
     SOAR_PRINT("Lowest Ever Free Heap: %d Bytes\n\n", xPortGetMinimumEverFreeHeapSize());
 

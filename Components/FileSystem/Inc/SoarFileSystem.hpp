@@ -15,7 +15,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <stdbool.h>
-#include "app_fatfs.h"
+//#include "app_fatfs.h"
 
 
 #ifdef __cplusplus

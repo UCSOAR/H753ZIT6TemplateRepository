@@ -22,7 +22,6 @@
 #include "main_system.hpp" // C++ Main File Header
 #include "UARTDriver.hpp"
 
-
 /* Cube++ Required Configuration ------------------------------------------------------------------*/
 #include "CubeDefines.hpp"
 constexpr UARTDriver *const DEFAULT_DEBUG_UART_DRIVER = UART::Debug;
@@ -58,5 +57,10 @@ constexpr uint16_t TASK_DEBUG_STACK_DEPTH_WORDS = 512; // Size of the debug task
 constexpr uint8_t TASK_FILESYSTEM_TASK_PRIORITY = 2;        // Priority of the filesystem task
 constexpr uint8_t TASK_FILESYSTEM_QUEUE_DEPTH_OBJS = 10;    // Size of the filesystem task queue
 constexpr uint16_t TASK_FILESYSTEM_STACK_DEPTH_WORDS = 512; // Size of the filesystem task stack
+
+// USB TASK
+constexpr uint8_t TASK_USB_PRIORITY = 2;             // Priority of the USB task
+constexpr uint8_t TASK_USB_QUEUE_DEPTH_OBJS = 10;    // Size of the USB task queue
+constexpr uint16_t TASK_USB_STACK_DEPTH_WORDS = 512; // Size of the USB task stack
 
 #endif // CUBE_MAIN_SYSTEM_DEFINES_H
