@@ -11,7 +11,7 @@
 #include "CubeUtils.hpp"
 #include <cstring>
 #include "SystemDefines.hpp"
-
+#include "usb_device.h"
 #include "stm32h7xx_hal.h"
 
 // External Tasks (to send debug commands to)
@@ -63,6 +63,7 @@ void DebugTask::InitTask() {
 void DebugTask::Run(void* pvParams) {
   // Arm the interrupt
   ReceiveData();
+  MX_USB_DEVICE_Init();
 
   while (1) {
     Command cm;

@@ -28,7 +28,7 @@ void run_main() {
     // Init Tasks
     CubeTask::Inst().InitTask();
     DebugTask::Inst().InitTask();
-    FileSystemTask::Inst().InitTask();
+    //FileSystemTask::Inst().InitTask();
     UARTTask::Inst().InitTask();
 
 

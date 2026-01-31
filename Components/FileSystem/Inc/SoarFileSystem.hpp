@@ -15,14 +15,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <stdbool.h>
-#include "app_fatfs.h"
+#include "fatfs.h"
 
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-int32_t MX_FATFS_Init(void);
+//int32_t MX_FATFS_Init(void);
     /* Exported types ------------------------------------------------------------*/
     typedef enum
     {
